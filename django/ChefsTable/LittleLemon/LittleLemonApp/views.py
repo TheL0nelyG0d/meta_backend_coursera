@@ -9,7 +9,8 @@ def say_hello(request):
     return HttpResponse("Hello World!")
 
 def homepage(request):
-    return HttpResponse("Welcome to Little Lemon")
+    content = "<html><body><h1>Welcome to Little Lemon</h1></body></html>"
+    return HttpResponse(content)
 
 def display_date(request):
     date_joined = datetime.today().year
@@ -18,6 +19,13 @@ def display_date(request):
 def menu(request):
     text = """<h1 style="color: #F4CE14;"> This is Little Lemon"""
     return HttpResponse(text)
-#def menu_by_id(request, menu_id):
-#    menu = Menu.Objects.get(pk=menu_id)
-#    return HttpResponse(f"{menu.mednu_item}: Type of {menu.cuisine} cuisine")
+
+def menuitems(request, dish):
+    menu = {
+        "pasta": "Pasta is a type of noodle made from wheat, eggs and water",
+        "falafel": "Falafel is a deep fried balls made out of beans",
+        "cheesecake": "Cheesecake is a type of desert made with cream, soft cheese on top of cookie, pastry crumbs or graham crakers and fruit sauce topping",
+    }
+    
+    description = menu[dish]
+    return HttpResponse(f"<h2> {dish} </h2>" + description)

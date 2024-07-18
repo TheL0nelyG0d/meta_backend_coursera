@@ -23,5 +23,8 @@ urlpatterns = [
     path('say_hello/', views.say_hello),
     path('home/', views.homepage),
     path('date/', views.display_date),
-    path('menu/', views.menu)
+    path('menu/', views.menu),
+    path('menu/<str:dish>', views.menuitems, name="menu"),
 ]
+
+handler404 = 'LittleLemon.views.handler404'
