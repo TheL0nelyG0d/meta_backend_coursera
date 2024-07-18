@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from LittleLemonApp.forms import LogForm
 
 #from .models import Menu
 # Create your views here.
@@ -29,3 +30,12 @@ def menuitems(request, dish):
     
     description = menu[dish]
     return HttpResponse(f"<h2> {dish} </h2>" + description)
+
+def shift_form(request):
+    form = LogForm()
+    if request.method == 'POST':
+        form = LogForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {"form": form}
+    return render(request, "shift.html", context)
