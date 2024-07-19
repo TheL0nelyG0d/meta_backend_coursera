@@ -39,3 +39,12 @@ def shift_form(request):
             form.save()
     context = {"form": form}
     return render(request, "shift.html", context)
+
+def about(request):
+    about_content = {"about": "Little Lemon is a family-owned Mediterranean restaurant, focused on traditional recipes served with a modern twist. The chefs draw inspiration from Italian, Greek, and Turkish culture and have a menu of 12–15 items that they rotate seasonally. The restaurant has a rustic and relaxed atmosphere with moderate prices, making it a popular place for a meal any time of the day."}
+    return render(request, "about.html", about_content)
+# Create view for Menu
+
+def menu_pic(request):
+    about_menu = {"cheesecake": "Cheesecake is a type of desert made with cream, soft cheese on top of cookie, pastry crumbs or graham crakers and fruit sauce topping"}
+    return render(request, "menu.html", about_menu)
